@@ -13,8 +13,7 @@
 * 🎓 B.Tech Electronics & Telecommunication (Honors in VLSI)
 * 🧠 Strong focus on **Digital IC Design, SoC Architecture & Computer Architecture**
 * ⚙️ Hands-on experience in **RTL Design → FPGA Implementation → System Integration**
-* 🚁 Currently developing **AI-enabled RISC-V SoC for autonomous drone systems**
-* 🎯 Targeting roles in **Qualcomm / Texas Instruments / NVIDIA (Hardware & SoC Design)**
+
 
 ---
 
