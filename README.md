@@ -37,45 +37,9 @@
 * Xilinx Vivado | Artix-7 | BASYS-3 | Arty A7
 * RTL → Synthesis → Implementation → Bitstream → Hardware Testing
 
-### 🤖 Hardware + AI Integration
-
-* Edge AI concepts on FPGA/MCU
-* Sensor-based intelligent systems
-* Real-time decision systems (Drone use-case)
-
----
-
-## 🔥 Featured Projects
-
-### 🧠 8-bit Custom RISC Processor (Verilog | FPGA)
-
-* Designed complete processor with **custom ISA**
-* Implemented ALU, Control Unit, PC, Memory, UART
-* Focus: **RTL clarity, modular design, FPGA validation**
-
----
-
-### 🚁 AI-Powered Drone SoC (RISC-V | SHAKTI Yamuna)
-
-* Dual-core 32-bit RISC-V SoC on FPGA
-* Core 0 → Flight Control | Core 1 → AI-based Stampede Detection
-* Exploring **hardware-software co-design & real-time AI inference**
-
----
-
-### ⚙️ Next Upgrade: Pipelined RISC-V Core
-
-* 5-stage pipeline (IF, ID, EX, MEM, WB)
-* Hazard Detection Unit
-* Forwarding Unit
-* Branch Handling Logic
-  ➡️ Focus: **Industry-level processor design concepts**
-
----
-
 ## 📈 What I’m Currently Building
 
-* 🧩 Pipelined RISC-V Processor (MNC-level architecture)
+* 🧩 Pipelined RISC-V Processor 
 * 🔗 SoC Integration using standard interconnects
 * ⚡ Low-power & efficient hardware design techniques
 * 🤖 AI acceleration approaches for embedded hardware
@@ -90,27 +54,5 @@
 *  Cummins Scholarship Recipient, 2025
 *  Won 1st Prize at KUMBHA Hackathon 2K25 organized by the IEEE Local Chapter
 
-
-
 ---
 
-## 🎯 Career Vision
-
-> To design high-performance, power-efficient chips and contribute to future technologies combining **AI + Hardware + Scalable Architectures**
-
----
-
-## 📫 Connect With Me
-
-* 💼 LinkedIn: https://www.linkedin.com/in/pratikm21/
-* 📧 Email: pratikmhasawade22@gmail.com
-
----
-
-## ⚡ Engineering Mindset
-
-> "Great hardware is not just designed — it is architected, optimized, and proven."
-
----
-
-⭐️ Actively building towards **industry-grade SoC design expertise**
