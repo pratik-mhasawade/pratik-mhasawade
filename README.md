@@ -8,10 +8,10 @@
 
 ---
 
-## 🚀 About Me
+## 🚀About Me
 
-* 🎓 B.Tech Electronics & Telecommunication (Honors in VLSI)
-* 🧠 Strong focus on **Digital IC Design, SoC Architecture & Computer Architecture**
-* ⚙️ Hands-on experience in **RTL Design → FPGA Implementation → System Integration**
+* B.Tech Electronics & Telecommunication (Honors in VLSI)
+* Strong focus on **Digital IC Design, SoC Architecture & Computer Architecture**
+* Hands-on experience in **RTL Design → FPGA Implementation → System Integration**
 
 ---
