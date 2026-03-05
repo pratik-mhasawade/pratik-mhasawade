@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pratik Mhasawade — Digital IC Design & Verification</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f9f8f6;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --border: #e5e2dc;
+    --accent: #1a56db;
+    --accent2: #6366f1;
+    --accent3: #059669;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --light: #f3f2ef;
+    --sans: 'DM Sans', sans-serif;
+    --serif: 'DM Serif Display', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 5rem;
+    background: rgba(249,248,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 5rem 5rem;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-left { flex: 1; }
+
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #e8f0fe;
+    border: 1px solid #c7d7fc;
+    border-radius: 100px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+  .hero-chip::before { content: '●'; font-size: 0.45rem; }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .hero-name span { color: var(--accent); }
+
+  .hero-title {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.8;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--text);
+    color: #fff;
+    font-size: 0.83rem;
+    font-weight: 500;
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.83rem;
+    font-weight: 400;
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--text); transform: translateY(-1px); }
+
+  .hero-right { flex-shrink: 0; position: relative; }
+
+  .profile-frame {
+    width: 260px; height: 320px;
+    position: relative;
+  }
+
+  .profile-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .profile-frame::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .profile-frame::after { display: none; }
+
+  .hero-stats {
+    display: flex; gap: 1rem;
+    margin-top: 1.2rem;
+  }
+  .stat {
+    text-align: center;
+    padding: 0.8rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    flex: 1;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--text);
+    font-weight: 400;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.15rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  /* ── ABOUT / SKILLS ── */
+  #about {
+    padding: 5rem 5rem;
+    border-top: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 0.97rem;
+    color: #4b5563;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  .skills-group { margin-bottom: 1.8rem; }
+  .skills-group-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .skill-tag {
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.28rem 0.75rem;
+    border-radius: 100px;
+  }
+  .tag-cyan { background: #e8f0fe; border: 1px solid #c7d7fc; color: #1a56db; }
+  .tag-purple { background: #ede9fe; border: 1px solid #c4b5fd; color: #5b21b6; }
+  .tag-green { background: #d1fae5; border: 1px solid #6ee7b7; color: #065f46; }
+
+  /* ── PROJECTS ── */
+  #projects {
+    padding: 5rem 5rem;
+    border-top: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.8rem;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); transform: translateY(-3px); }
+
+  .project-card img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1.4rem;
+    background: var(--light);
+  }
+
+  .project-img-placeholder {
+    width: 100%; height: 175px;
+    background: var(--light);
+    border-radius: 6px;
+    margin-bottom: 1.4rem;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+  }
+
+  .project-img-placeholder .circuit-icon {
+    font-size: 2.5rem;
+    opacity: 0.4;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: #e8f0fe;
+    border: 1px solid #c7d7fc;
+    padding: 0.18rem 0.6rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.7rem;
+  }
+
+  .project-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .project-desc {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.4rem;
+    font-weight: 300;
+  }
+
+  .project-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .project-tech { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .tech-pill {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.2rem 0.55rem;
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--muted);
+  }
+
+  .project-link {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 0.7; }
+
+  /* ── EXPERIENCE ── */
+  #experience {
+    padding: 5rem 5rem;
+    border-top: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .timeline { position: relative; padding-left: 2rem; max-width: 700px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 2.8rem 2rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .timeline-date {
+    font-size: 0.73rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+  .timeline-role {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+    color: var(--text);
+  }
+  .timeline-company {
+    font-size: 0.83rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: #6b7280;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications {
+    padding: 5rem 5rem;
+    border-top: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.3rem 1.4rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .cert-card:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+
+  .cert-icon {
+    width: 38px; height: 38px;
+    background: #e8f0fe;
+    border: 1px solid #c7d7fc;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .cert-issuer {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* ── POSTS / BLOG ── */
+  #posts {
+    padding: 5rem 5rem;
+    border-top: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .post-card:hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+
+  .post-img {
+    width: 100%; height: 150px;
+    background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-img-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .post-body { padding: 1.3rem; }
+
+  .post-meta {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .post-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.45;
+    margin-bottom: 0.55rem;
+    color: var(--text);
+  }
+
+  .post-excerpt {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding: 6rem 5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-inner { max-width: 540px; margin: 0 auto; }
+
+  .contact-desc {
+    font-size: 0.97rem;
+    color: #6b7280;
+    line-height: 1.8;
+    margin-bottom: 2.2rem;
+    font-weight: 300;
+  }
+
+  .contact-links { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.83rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--text); transform: translateY(-1px); }
+  .contact-link.primary { background: var(--text); color: #fff; border-color: var(--text); }
+  .contact-link.primary:hover { background: var(--accent); border-color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.8rem 5rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* ── HOW TO EDIT BANNER ── */
+  .edit-banner {
+    background: #e8f0fe;
+    border: 1px dashed #c7d7fc;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 3rem;
+    font-size: 0.8rem;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    #hero { flex-direction: column; padding: 6rem 1.5rem 3rem; text-align: center; }
+    .hero-desc { max-width: 100%; }
+    .hero-actions { justify-content: center; }
+    .hero-right { order: -1; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    #about, #projects, #experience, #certifications, #posts, #contact { padding: 3.5rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-logo">PM_PORTFOLIO</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certs</a>
+    <a href="#posts">Posts</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-left">
+    <!-- ✏️ EDIT: Change the chip text below -->
+    <div class="hero-chip">Available for Internships — Summer 2025</div>
+
+    <!-- ✏️ EDIT: Change your name below -->
+    <h1 class="hero-name">Pratik<br/><span>Mhasawade</span></h1>
+
+    <!-- ✏️ EDIT: Change your title below -->
+    <p class="hero-title">// Digital IC Design &amp; Verification · Embedded AI · RISC-V</p>
+
+    <!-- ✏️ EDIT: Change your description below -->
+    <p class="hero-desc">
+      Electronics undergraduate specializing in Digital ASIC Design, RTL Development, and RISC-V Microarchitecture.
+      Targeting roles at <strong style="color:var(--text)">Qualcomm · Texas Instruments · NVIDIA</strong> in Hardware &amp; SoC Design.
+    </p>
+
+    <div class="hero-actions">
+      <!-- ✏️ EDIT: Replace '#' with your resume PDF link -->
+      <a href="#" class="btn-primary">↓ Download Resume</a>
+      <a href="#projects" class="btn-ghost">View Projects →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="profile-frame">
+      <!-- ✏️ EDIT: Replace 'YOUR_PHOTO.jpg' with your actual photo path or URL -->
+      <!-- If no photo yet, the placeholder below shows initials -->
+      <div style="width:100%;height:100%;background:#f0ede8;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:4.5rem;font-weight:400;color:rgba(26,86,219,0.25);font-family:var(--serif)">PM</span>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <!-- ✏️ EDIT: Update your stats below -->
+      <div class="stat">
+        <span class="stat-num">32-bit</span>
+        <span class="stat-label">RISC-V CPU</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4+</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">FPGA</span>
+        <span class="stat-label">Deployed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-label">01 / About</div>
+  <h2 class="section-title fade-up">Who I Am</h2>
+  <div class="about-grid">
+    <div>
+      <!-- ✏️ EDIT: Update your about text below -->
+      <p class="about-text">
+        I'm a final-year B.Tech Electronics & Telecommunication student with Honors in VLSI at VPKBIET.
+        My focus lies at the intersection of hardware design and AI — designing fast, efficient silicon
+        that powers the next generation of intelligent systems.
+        <br/><br/>
+        I've designed and implemented a 32-bit RISC-V processor on FPGA, built high-performance
+        pipelined accelerators, and I'm currently working on an AI-enabled RISC-V SoC for
+        autonomous drone systems.
+        <br/><br/>
+        When I'm not in simulation, I'm reading papers on computer architecture, contributing to
+        open-source hardware, or mentoring juniors in digital design.
+      </p>
+    </div>
+    <div>
+      <!-- ✏️ EDIT: Add/remove skills in each group below -->
+      <div class="skills-group">
+        <div class="skills-group-label">// Hardware Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag tag-cyan">Verilog</span>
+          <span class="skill-tag tag-cyan">SystemVerilog</span>
+          <span class="skill-tag tag-cyan">VHDL</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">// Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag tag-purple">Vivado</span>
+          <span class="skill-tag tag-purple">ModelSim</span>
+          <span class="skill-tag tag-purple">Synopsys DC</span>
+          <span class="skill-tag tag-purple">Cadence</span>
+          <span class="skill-tag tag-purple">FPGA Xilinx</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <div class="skills-group-label">// Areas of Expertise</div>
+        <div class="skill-tags">
+          <span class="skill-tag tag-green">RTL Design</span>
+          <span class="skill-tag tag-green">RISC-V</span>
+          <span class="skill-tag tag-green">SoC Integration</span>
+          <span class="skill-tag tag-green">Functional Verification</span>
+          <span class="skill-tag tag-green">Pipelining</span>
+          <span class="skill-tag tag-green">Timing Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-label">02 / Projects</div>
+  <h2 class="section-title fade-up">What I've Built</h2>
+
+  <div class="projects-grid">
+
+    <!-- ✏️ EDIT PROJECT 1 -->
+    <div class="project-card fade-up">
+      <div class="project-img-placeholder">
+        <span class="circuit-icon">⚙️</span>
+        <!-- ✏️ To add an image: replace the div above with: <img src="your-image.jpg" alt="Project"> -->
+      </div>
+      <span class="project-tag">Featured</span>
+      <h3 class="project-title">32-bit RISC-V Processor on FPGA</h3>
+      <p class="project-desc">
+        Fully pipelined RV32I implementation with hazard detection, forwarding unit,
+        and branch prediction. Deployed on Xilinx Basys3 FPGA. Achieved 85 MHz clock frequency.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-pill">Verilog</span>
+          <span class="tech-pill">Vivado</span>
+          <span class="tech-pill">FPGA</span>
+        </div>
+        <!-- ✏️ EDIT: Replace '#' with your GitHub link -->
+        <a href="#" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- ✏️ EDIT PROJECT 2 -->
+    <div class="project-card fade-up">
+      <div class="project-img-placeholder">
+        <span class="circuit-icon">🤖</span>
+      </div>
+      <span class="project-tag">In Progress</span>
+      <h3 class="project-title">AI-enabled RISC-V SoC for Drones</h3>
+      <p class="project-desc">
+        Designing a custom SoC with a RISC-V core and neural network accelerator
+        for real-time object detection on autonomous UAV systems.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-pill">SystemVerilog</span>
+          <span class="tech-pill">AXI Bus</span>
+          <span class="tech-pill">HLS</span>
+        </div>
+        <a href="#" class="project-link">Details →</a>
+      </div>
+    </div>
+
+    <!-- ✏️ EDIT PROJECT 3 -->
+    <div class="project-card fade-up">
+      <div class="project-img-placeholder">
+        <span class="circuit-icon">📡</span>
+      </div>
+      <span class="project-tag">Hackathon</span>
+      <h3 class="project-title">Smart India Hackathon</h3>
+      <p class="project-desc">
+        Built an embedded hardware solution for [describe your hackathon project here].
+        Add a short description of what problem you solved and what tech you used.
+      </p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-pill">Embedded C</span>
+          <span class="tech-pill">FPGA</span>
+        </div>
+        <a href="#" class="project-link">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- ✏️ ADD MORE PROJECTS: Copy and paste a project-card block above and edit the content -->
+
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-label">03 / Experience</div>
+  <h2 class="section-title fade-up">Where I've Worked</h2>
+
+  <div class="timeline">
+
+    <!-- ✏️ EDIT EXPERIENCE 1 -->
+    <div class="timeline-item fade-up">
+      <div class="timeline-date">Jan 2025 — Present</div>
+      <div class="timeline-role">Hardware Design Intern</div>
+      <div class="timeline-company">Company Name · Location</div>
+      <div class="timeline-desc">
+        Describe your role and key contributions here. What did you design, verify, or improve?
+        Mention tools used and any measurable outcomes.
+      </div>
+    </div>
+
+    <!-- ✏️ EDIT EXPERIENCE 2 -->
+    <div class="timeline-item fade-up">
+      <div class="timeline-date">Jul 2024 — Dec 2024</div>
+      <div class="timeline-role">Research Assistant — VLSI Lab</div>
+      <div class="timeline-company">VPKBIET · Baramati</div>
+      <div class="timeline-desc">
+        Assisted in designing and testing digital circuits for research projects.
+        Implemented RTL modules in Verilog and ran synthesis using Vivado toolchain.
+      </div>
+    </div>
+
+    <!-- ✏️ ADD MORE: Copy a timeline-item block and edit it -->
+
+  </div>
+</section>
+
+<!-- ── CERTIFICATIONS ── -->
+<section id="certifications">
+  <div class="section-label">04 / Certifications</div>
+  <h2 class="section-title fade-up">Credentials</h2>
+
+  <div class="certs-grid">
+    <!-- ✏️ EDIT CERTS: Change the emoji icon, name, and issuer -->
+    <div class="cert-card fade-up">
+      <div class="cert-icon">🖥️</div>
+      <div>
+        <div class="cert-name">Hardware Description Language — Verilog</div>
+        <div class="cert-issuer">Coursera / NPTEL</div>
+      </div>
+    </div>
+    <div class="cert-card fade-up">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <div class="cert-name">FPGA Design for Embedded Systems</div>
+        <div class="cert-issuer">University of Colorado — Coursera</div>
+      </div>
+    </div>
+    <div class="cert-card fade-up">
+      <div class="cert-icon">🔬</div>
+      <div>
+        <div class="cert-name">Digital IC Design Specialization</div>
+        <div class="cert-issuer">NPTEL / IIT</div>
+      </div>
+    </div>
+    <div class="cert-card fade-up">
+      <div class="cert-icon">🚀</div>
+      <div>
+        <div class="cert-name">Computer Architecture</div>
+        <div class="cert-issuer">Princeton — Coursera</div>
+      </div>
+    </div>
+    <!-- ✏️ ADD MORE: Copy a cert-card block and edit it -->
+  </div>
+</section>
+
+<!-- ── POSTS ── -->
+<section id="posts">
+  <div class="section-label">05 / Posts</div>
+  <h2 class="section-title fade-up">My Thoughts</h2>
+
+  <div class="posts-grid">
+    <!-- ✏️ EDIT POST 1 -->
+    <div class="post-card fade-up">
+      <div class="post-img">
+        <span class="post-img-label">▶ RISC-V</span>
+        <!-- ✏️ To add image: <img src="post-image.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+      </div>
+      <div class="post-body">
+        <div class="post-meta">Mar 2025 · Hardware</div>
+        <div class="post-title">How I Built a RISC-V Processor from Scratch</div>
+        <div class="post-excerpt">
+          A deep-dive into designing a pipelined 32-bit RISC-V processor — from ISA specification to FPGA deployment.
+        </div>
+      </div>
+    </div>
+
+    <!-- ✏️ EDIT POST 2 -->
+    <div class="post-card fade-up">
+      <div class="post-img">
+        <span class="post-img-label">▶ AI+HW</span>
+      </div>
+      <div class="post-body">
+        <div class="post-meta">Feb 2025 · AI on Silicon</div>
+        <div class="post-title">Why AI Needs Custom Hardware: An Engineer's View</div>
+        <div class="post-excerpt">
+          Exploring the gap between GPUs and purpose-built accelerators, and why hardware engineers matter more than ever.
+        </div>
+      </div>
+    </div>
+
+    <!-- ✏️ ADD MORE: Copy a post-card and fill in your content -->
+    <div class="post-card fade-up" style="border-style: dashed; display:flex; align-items:center; justify-content:center; min-height:240px;">
+      <div style="text-align:center; color:var(--muted); font-size:0.82rem; font-weight:400;">
+        + Add your next post here
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-label">06 / Contact</div>
+  <div class="contact-inner">
+    <h2 class="section-title fade-up">Let's Connect</h2>
+    <p class="contact-desc">
+      I'm actively looking for internship and full-time opportunities in Digital IC Design and Verification.
+      Whether it's a role, a collaboration, or just a conversation about RISC-V —
+      my inbox is open.
+    </p>
+    <div class="contact-links">
+      <!-- ✏️ EDIT: Replace with your actual email and links -->
+      <a href="mailto:pratik.mhasawade.entc.2023@vpkbiet.org" class="contact-link primary">✉ Send Email</a>
+      <a href="https://www.linkedin.com/in/pratikm21/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/pratik-mhasawade" target="_blank" class="contact-link">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-copy">© 2025 Pratik Mhasawade — Built with HTML/CSS</div>
+  <div class="footer-copy" style="color: #c9d0db; font-size:0.72rem;">Digital IC Design · RISC-V · FPGA</div>
+</footer>
+
+<!-- ── SCROLL ANIMATION SCRIPT ── -->
+<script>
+  // Fade-up animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Stagger delays for grids
+  document.querySelectorAll('.projects-grid .fade-up, .certs-grid .fade-up, .posts-grid .fade-up').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+
+</body>
+</html>
