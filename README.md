@@ -1,6 +1,7 @@
 
 <h1 align="center">Hi , I'm Pratik Mhasawade</h1>
-<h3 align="center">Digital IC Design | SoC Architecture | FPGA & RISC-V Engineer</h3>
+<h3 align="center">Frontend VLSI Design & Verification | FPGA & RISC-V</h3>
+<h3 align="center">Verilog, SystemVerilog, C, Python </h3>
 
 <p align="center">
   <b>Focused on building scalable, high-performance hardware systems for next-generation computing</b>
